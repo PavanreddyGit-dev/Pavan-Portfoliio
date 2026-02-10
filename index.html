@@ -29,13 +29,27 @@
             transition: opacity 1s ease;
         }
 
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .intro img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
         .intro h1 {
-            font-size: 70px;
+            font-size: 60px;
             letter-spacing: 2px;
         }
 
         .intro button {
-            margin-top: 30px;
+            margin-top: 40px;
             padding: 12px 30px;
             border: 2px solid white;
             background: transparent;
@@ -89,6 +103,7 @@
             max-width: 450px;
             line-height: 1.6;
             color: #aaa;
+            font-size: 16px;
         }
 
         /* Floating Animation */
@@ -105,7 +120,15 @@
 
 <!-- INTRO -->
 <div class="intro" id="intro">
-    <h1>Pavan Kumar Reddy</h1>
+
+    <div class="intro-content">
+        <!-- Your Real Photo -->
+        <img src="assets/Profile.jpeg" alt="Profile Photo">
+
+        <!-- Your Name -->
+        <h1>Pavan Kumar Reddy</h1>
+    </div>
+
     <button onclick="reveal()">Tap to Reveal</button>
 </div>
 
@@ -113,7 +136,7 @@
 <div class="split" id="splitSection">
 
     <div class="left">
-        <!-- Make sure image name matches exactly -->
+        <!-- 3D Avatar -->
         <img src="assets/Avatar.png" alt="Avatar">
     </div>
 
@@ -121,8 +144,8 @@
         <h2>About Me</h2>
         <p>
             I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
-            I create modern, immersive digital experiences with storytelling
-            and smooth interactions.
+            I create modern, immersive digital experiences focused on
+            storytelling, smooth interaction, and clean design.
         </p>
     </div>
 
