@@ -12,24 +12,16 @@
             font-family: Arial, sans-serif;
         }
 
-        /* SUBTLE PROFESSIONAL ANIMATED BACKGROUND */
+        /* SUBTLE ANIMATED BACKGROUND */
         body {
-            margin: 0;
-            padding: 0;
             color: white;
             overflow: hidden;
-            background: linear-gradient(
-                -45deg,
-                #0f0f0f,
-                #141414,
-                #1a1a1a,
-                #0f0f0f
-            );
+            background: linear-gradient(-45deg, #0f0f0f, #141414, #1a1a1a, #0f0f0f);
             background-size: 400% 400%;
-            animation: subtleMove 20s ease infinite;
+            animation: bgMove 20s ease infinite;
         }
 
-        @keyframes subtleMove {
+        @keyframes bgMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -42,7 +34,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            opacity: 1;
             transition: opacity 1s ease;
         }
 
@@ -50,39 +41,36 @@
             display: flex;
             align-items: center;
             gap: 30px;
-            animation: fadeInUp 1.5s ease forwards;
         }
-        
+
         .intro-content img {
             width: 130px;
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid white;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
         .intro-content h1 {
             font-size: 54px;
-            font-weight: 600
-            letter-spacing: 2px;
+            font-weight: 600;
         }
 
         .intro button {
             margin-top: 40px;
-            padding: 12px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 14px 36px;
+            border: 1px solid rgba(255,255,255,0.6);
             background: transparent;
             color: white;
             cursor: pointer;
-            transition: 0.3s;
-            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
 
         .intro button:hover {
             background: white;
             color: black;
-            transform: translatey(-3px);
+            transform: translateY(-3px);
         }
 
         /* SPLIT SECTION */
@@ -102,11 +90,14 @@
         }
 
         .left {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0,0,0,0.4);
+            overflow: hidden;
         }
 
         .left img {
-            width: 350px;
+            width: 280px;
+            max-height: 70vh;
+            object-fit: contain;
             animation: float 4s ease-in-out infinite;
         }
 
@@ -116,8 +107,7 @@
             -webkit-backdrop-filter: blur(12px);
             flex-direction: column;
             padding: 60px;
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: -20px 0px 60px rgba(0, 0, 0, 0.6);
+            border-left: 1px solid rgba(255,255,255,0.05);
         }
 
         .right h2 {
@@ -132,7 +122,6 @@
             font-size: 16px;
         }
 
-        /* FLOATING AVATAR */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -148,21 +137,18 @@
 <div class="intro" id="intro">
 
     <div class="intro-content">
-        <!-- Your Real Profile Photo -->
         <img src="assets/Profile.jpeg" alt="Profile Photo">
-
-        <!-- Your Name -->
         <h1>Pavan Kumar Reddy</h1>
     </div>
 
     <button onclick="reveal()">Tap to Reveal</button>
+
 </div>
 
 <!-- SPLIT SECTION -->
 <div class="split" id="splitSection">
 
     <div class="left">
-        <!-- 3D Avatar -->
         <img src="assets/Avatar.png" alt="Avatar">
     </div>
 
