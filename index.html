@@ -12,15 +12,15 @@
             font-family: Arial, sans-serif;
         }
 
-        /* BODY */
+        /* LIGHT BACKGROUND */
         body {
-            color: white;
+            color: #222;
             overflow: hidden;
-            background: #0f0f0f;
+            background: #f8f9fb;
             position: relative;
         }
 
-        /* LIGHT WAVE BACKGROUND */
+        /* SUBTLE LIGHT WAVE ANIMATION */
         body::before {
             content: "";
             position: absolute;
@@ -30,7 +30,7 @@
             left: -25%;
             background: radial-gradient(
                 circle at center,
-                rgba(255,255,255,0.06),
+                rgba(0,0,0,0.05),
                 transparent 60%
             );
             animation: lightWave 18s ease-in-out infinite;
@@ -70,8 +70,8 @@
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid white;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            border: 3px solid #222;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15);
         }
 
         .intro-text {
@@ -87,7 +87,7 @@
         .subtitle {
             margin-top: 8px;
             font-size: 16px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(0,0,0,0.6);
             letter-spacing: 1px;
         }
 
@@ -95,16 +95,16 @@
         .intro button {
             margin-top: 40px;
             padding: 14px 36px;
-            border: 1px solid rgba(255,255,255,0.6);
+            border: 1px solid #222;
             background: transparent;
-            color: white;
+            color: #222;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .intro button:hover {
-            background: white;
-            color: black;
+            background: #222;
+            color: white;
             transform: translateY(-3px);
         }
 
@@ -125,8 +125,7 @@
         }
 
         .left {
-            background: rgba(0,0,0,0.4);
-            overflow: hidden;
+            background: #ffffff;
         }
 
         .left img {
@@ -137,12 +136,12 @@
         }
 
         .right {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             flex-direction: column;
             padding: 60px;
-            border-left: 1px solid rgba(255,255,255,0.05);
+            border-left: 1px solid rgba(0,0,0,0.05);
         }
 
         .right h2 {
@@ -153,7 +152,7 @@
         .right p {
             max-width: 450px;
             line-height: 1.6;
-            color: #aaa;
+            color: #555;
             font-size: 16px;
         }
 
@@ -186,43 +185,4 @@
 </div>
 
 <!-- SPLIT SECTION -->
-<div class="split" id="splitSection">
-
-    <div class="left">
-        <img src="assets/Avatar.png" alt="Avatar">
-    </div>
-
-    <div class="right">
-        <h2>About Me</h2>
-        <p>
-            I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
-            I create modern, immersive digital experiences focused on
-            storytelling, smooth interaction, and clean design.
-        </p>
-    </div>
-
-</div>
-
-<script>
-    function reveal() {
-        const intro = document.getElementById("intro");
-        const split = document.getElementById("splitSection");
-
-        intro.style.opacity = "0";
-
-        setTimeout(() => {
-            intro.style.display = "none";
-            split.style.display = "flex";
-
-            setTimeout(() => {
-                split.style.opacity = "1";
-            }, 50);
-
-            document.body.style.overflow = "auto";
-
-        }, 1000);
-    }
-</script>
-
-</body>
-</html>
+<div class="split" id="splitSectio
