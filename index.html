@@ -12,40 +12,58 @@
             font-family: Arial, sans-serif;
         }
 
+        /* SUBTLE PROFESSIONAL ANIMATED BACKGROUND */
         body {
-            background: black;
+            margin: 0;
+            padding: 0;
             color: white;
             overflow: hidden;
+            background: linear-gradient(
+                -45deg,
+                #0f0f0f,
+                #141414,
+                #1a1a1a,
+                #0f0f0f
+            );
+            background-size: 400% 400%;
+            animation: subtleMove 20s ease infinite;
+        }
+
+        @keyframes subtleMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* INTRO SECTION */
         .intro {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 1s ease;
-}
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
 
-.intro-content {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
-.intro-content img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-}
+        .intro-content img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
 
-.intro-content h1 {
-    font-size: 60px;
-}
+        .intro-content h1 {
+            font-size: 60px;
+            letter-spacing: 2px;
+        }
 
         .intro button {
             margin-top: 40px;
@@ -79,7 +97,7 @@
         }
 
         .left {
-            background: #111;
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .left img {
@@ -88,9 +106,13 @@
         }
 
         .right {
-            background: #1a1a1a;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             flex-direction: column;
             padding: 60px;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: -20px 0px 60px rgba(0, 0, 0, 0.6);
         }
 
         .right h2 {
@@ -105,7 +127,7 @@
             font-size: 16px;
         }
 
-        /* Floating Animation */
+        /* FLOATING AVATAR */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -121,7 +143,7 @@
 <div class="intro" id="intro">
 
     <div class="intro-content">
-        <!-- Your Real Photo -->
+        <!-- Your Real Profile Photo -->
         <img src="assets/Profile.jpeg" alt="Profile Photo">
 
         <!-- Your Name -->
@@ -155,7 +177,6 @@
         const intro = document.getElementById("intro");
         const split = document.getElementById("splitSection");
 
-        // Fade out intro
         intro.style.opacity = "0";
 
         setTimeout(() => {
