@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Pavan Kumar Reddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: #f8f9fb;
+            color: #111;
+            display: flex;
+            height: 100vh;
+        }
+
+        .left, .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left {
+            background: white;
+        }
+
+        .left img {
+            width: 320px;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .right {
+            flex-direction: column;
+            padding: 60px;
+        }
+
+        .right h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .right p {
+            max-width: 500px;
+            line-height: 1.6;
+            color: #555;
+            font-size: 17px;
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            padding: 12px 30px;
+            border: 1px solid #111;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #111;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="left">
+        <img src="assets/Avatar.png" alt="Avatar">
+    </div>
+
+    <div class="right">
+        <h2>About Me</h2>
+        <p>
+            I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
+            I specialize in creating immersive and modern digital experiences
+            with clean design systems and smooth animations.
+        </p>
+
+        <button class="back-btn" onclick="window.location.href='index.html'">
+            Go Back
+        </button>
+    </div>
+
+</body>
+</html>
