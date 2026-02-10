@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pavan Kumar Reddy</title>
+    <title>About - Pavan Kumar Reddy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -15,116 +15,8 @@
         body {
             background: #f8f9fb;
             color: #111;
-            overflow: hidden;
-            perspective: 1200px;
-        }
-
-        /* Apple Spotlight */
-        .mouse-light {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            pointer-events: none;
-            background: radial-gradient(
-                circle,
-                rgba(0,0,0,0.12) 0%,
-                rgba(0,0,0,0.06) 40%,
-                transparent 70%
-            );
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        /* INTRO */
-        .intro {
-            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease;
-        }
-
-        .intro-content {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease;
-        }
-
-        .intro-content img {
-            width: 170px;
-            height: 190px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #111;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        /* Letter Reveal */
-        .intro-text h1 span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: revealLetter 0.6s forwards;
-        }
-
-        @keyframes revealLetter {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .subtitle {
-            margin-top: 8px;
-            font-size: 16px;
-            color: rgba(0,0,0,0.6);
-            opacity: 0;
-            transform: translateY(15px);
-            animation: revealSubtitle 1s forwards;
-            animation-delay: 1.2s;
-        }
-
-        @keyframes revealSubtitle {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .intro button {
-            margin-top: 40px;
-            padding: 14px 36px;
-            border: 1px solid #111;
-            background: transparent;
-            color: #111;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInBtn 1s forwards;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes fadeInBtn {
-            to { opacity: 1; }
-        }
-
-        .intro button:hover {
-            background: #111;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* SPLIT SECTION */
-        .split {
-            display: none;
             height: 100vh;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
         }
 
         .left, .right {
@@ -134,35 +26,45 @@
             align-items: center;
         }
 
+        .left {
+            background: white;
+        }
+
         .left img {
-            width: 280px;
-            max-height: 70vh;
+            width: 320px;
+            max-height: 80vh;
             object-fit: contain;
-            animation: float 4s ease-in-out infinite;
         }
 
         .right {
             flex-direction: column;
             padding: 60px;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(10px);
         }
 
         .right h2 {
-            font-size: 36px;
+            font-size: 40px;
             margin-bottom: 20px;
         }
 
         .right p {
-            max-width: 450px;
+            max-width: 500px;
             line-height: 1.6;
             color: #555;
+            font-size: 17px;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .back-btn {
+            margin-top: 40px;
+            padding: 12px 30px;
+            border: 1px solid #111;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #111;
+            color: white;
         }
 
     </style>
@@ -170,104 +72,22 @@
 
 <body>
 
-    <div class="mouse-light" id="mouseLight"></div>
-
-    <!-- INTRO -->
-    <div class="intro" id="intro">
-        <div class="intro-content" id="parallaxLayer">
-            <!-- FIXED IMAGE NAME -->
-            <img src="assets/profile-1.jpeg" alt="Profile Photo">
-            <div class="intro-text">
-                <h1 id="animatedName"></h1>
-                <p class="subtitle">UI/UX Designer • Flutter Developer</p>
-            </div>
-        </div>
-
-        <button id="revealBtn">Tap to Reveal</button>
+    <div class="left">
+        <img src="assets/Avatar.png" alt="Avatar">
     </div>
 
-    <!-- SPLIT -->
-    <div class="split" id="splitSection">
-        <div class="left">
-            <!-- FIXED IMAGE NAME -->
-            <img src="assets/Avatar.png" id="avatar">
-        </div>
+    <div class="right">
+        <h2>About Me</h2>
+        <p>
+            I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
+            I specialize in creating immersive and modern digital experiences
+            with clean design systems and smooth animations.
+        </p>
 
-        <div class="right">
-            <h2>About Me</h2>
-            <p>
-                I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
-                I create modern digital experiences focused on storytelling,
-                interaction design, and clean user interfaces.
-            </p>
-        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">
+            Go Back
+        </button>
     </div>
-
-    <script>
-        /* Letter Animation */
-        const name = "Pavan Kumar Reddy";
-        const nameContainer = document.getElementById("animatedName");
-
-        name.split("").forEach((letter, index) => {
-            const span = document.createElement("span");
-            span.textContent = letter;
-            span.style.animationDelay = (index * 0.05) + "s";
-            nameContainer.appendChild(span);
-        });
-
-        /* Reveal Button */
-        document.getElementById("revealBtn").addEventListener("click", function() {
-            const intro = document.getElementById("intro");
-            const split = document.getElementById("splitSection");
-
-            intro.style.opacity = "0";
-
-            setTimeout(function() {
-                intro.style.display = "none";
-                split.style.display = "flex";
-
-                setTimeout(function() {
-                    split.style.opacity = "1";
-                }, 50);
-
-                document.body.style.overflow = "auto";
-            }, 800);
-        });
-
-        /* Spotlight */
-        const light = document.getElementById("mouseLight");
-        document.addEventListener("mousemove", function(e) {
-            light.style.left = e.clientX + "px";
-            light.style.top = e.clientY + "px";
-        });
-
-        /* Smooth Parallax */
-        const layer = document.getElementById("parallaxLayer");
-        const avatar = document.getElementById("avatar");
-
-        let mouseX = 0, mouseY = 0;
-        let currentX = 0, currentY = 0;
-
-        document.addEventListener("mousemove", function(e) {
-            mouseX = (window.innerWidth / 2 - e.clientX) / 25;
-            mouseY = (window.innerHeight / 2 - e.clientY) / 25;
-        });
-
-        function animateParallax() {
-            currentX += (mouseX - currentX) * 0.08;
-            currentY += (mouseY - currentY) * 0.08;
-
-            layer.style.transform = `rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
-
-            if (avatar) {
-                avatar.style.transform = `translateX(${currentX * 2}px) translateY(${currentY * 2}px)`;
-            }
-
-            requestAnimationFrame(animateParallax);
-        }
-
-        animateParallax();
-    </script>
 
 </body>
 </html>
