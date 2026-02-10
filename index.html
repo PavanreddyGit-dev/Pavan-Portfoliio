@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pavan Kumar Reddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* INTRO */
+        .intro {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro h1 {
+            font-size: 70px;
+            letter-spacing: 2px;
+        }
+
+        .intro button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .intro button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* SPLIT SECTION */
+        .split {
+            display: none;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .left, .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left {
+            background: #111;
+        }
+
+        .left img {
+            width: 350px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .right {
+            background: #1a1a1a;
+            flex-direction: column;
+            padding: 60px;
+        }
+
+        .right h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .right p {
+            max-width: 450px;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="intro" id="intro">
+    <h1>Pavan Kumar Reddy</h1>
+    <button onclick="reveal()">Tap to Reveal</button>
+</div>
+
+<div class="split" id="splitSection">
+
+    <div class="left">
+        <img src="assets/Avatar.png">
+    </div>
+
+    <div class="right">
+        <h2>About Me</h2>
+        <p>
+            I am a UI/UX Designer and Flutter Developer.
+            I create modern, immersive digital experiences
+            with storytelling and smooth interactions.
+        </p>
+    </div>
+
+</div>
+
+<script>
+    function reveal() {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("splitSection").style.display = "flex";
+        document.body.style.overflow = "auto";
+    }
+</script>
+
+</body>
+</html>
 
