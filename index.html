@@ -19,16 +19,19 @@
             perspective: 1200px;
         }
 
-        /* Mouse Spotlight */
+        /* Apple Spotlight */
         .mouse-light {
             position: fixed;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
             pointer-events: none;
-            background: radial-gradient(circle,
-                rgba(0,0,0,0.06),
-                transparent 60%);
+            background: radial-gradient(
+                circle,
+                rgba(0,0,0,0.12) 0%,
+                rgba(0,0,0,0.06) 40%,
+                transparent 70%
+            );
             transform: translate(-50%, -50%);
             z-index: 0;
         }
@@ -60,7 +63,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        /* TEXT REVEAL */
+        /* Letter Reveal */
         .intro-text h1 span {
             display: inline-block;
             opacity: 0;
@@ -115,7 +118,7 @@
             transform: translateY(-3px);
         }
 
-        /* SPLIT */
+        /* SPLIT SECTION */
         .split {
             display: none;
             height: 100vh;
@@ -136,7 +139,6 @@
             max-height: 70vh;
             object-fit: contain;
             animation: float 4s ease-in-out infinite;
-            transition: transform 0.2s ease;
         }
 
         .right {
@@ -173,6 +175,7 @@
     <!-- INTRO -->
     <div class="intro" id="intro">
         <div class="intro-content" id="parallaxLayer">
+            <!-- FIXED IMAGE NAME -->
             <img src="assets/profile-1.jpeg" alt="Profile Photo">
             <div class="intro-text">
                 <h1 id="animatedName"></h1>
@@ -186,6 +189,7 @@
     <!-- SPLIT -->
     <div class="split" id="splitSection">
         <div class="left">
+            <!-- FIXED IMAGE NAME -->
             <img src="assets/Avatar.png" id="avatar">
         </div>
 
@@ -200,7 +204,7 @@
     </div>
 
     <script>
-        /* LETTER BY LETTER NAME */
+        /* Letter Animation */
         const name = "Pavan Kumar Reddy";
         const nameContainer = document.getElementById("animatedName");
 
@@ -230,26 +234,39 @@
             }, 800);
         });
 
-        /* Mouse Light */
+        /* Spotlight */
         const light = document.getElementById("mouseLight");
         document.addEventListener("mousemove", function(e) {
             light.style.left = e.clientX + "px";
             light.style.top = e.clientY + "px";
         });
 
-        /* Parallax */
+        /* Smooth Parallax */
         const layer = document.getElementById("parallaxLayer");
         const avatar = document.getElementById("avatar");
 
-        document.addEventListener("mousemove", function(e) {
-            const x = (window.innerWidth / 2 - e.clientX) / 40;
-            const y = (window.innerHeight / 2 - e.clientY) / 40;
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
 
-            layer.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-            if (avatar) {
-                avatar.style.transform = `translateX(${x * 2}px) translateY(${y * 2}px)`;
-            }
+        document.addEventListener("mousemove", function(e) {
+            mouseX = (window.innerWidth / 2 - e.clientX) / 25;
+            mouseY = (window.innerHeight / 2 - e.clientY) / 25;
         });
+
+        function animateParallax() {
+            currentX += (mouseX - currentX) * 0.08;
+            currentY += (mouseY - currentY) * 0.08;
+
+            layer.style.transform = `rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
+
+            if (avatar) {
+                avatar.style.transform = `translateX(${currentX * 2}px) translateY(${currentY * 2}px)`;
+            }
+
+            requestAnimationFrame(animateParallax);
+        }
+
+        animateParallax();
     </script>
 
 </body>
