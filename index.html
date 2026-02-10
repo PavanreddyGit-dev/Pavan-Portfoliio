@@ -12,19 +12,41 @@
             font-family: Arial, sans-serif;
         }
 
-        /* SUBTLE ANIMATED BACKGROUND */
+        /* BODY */
         body {
             color: white;
             overflow: hidden;
-            background: linear-gradient(-45deg, #0f0f0f, #141414, #1a1a1a, #0f0f0f);
-            background-size: 400% 400%;
-            animation: bgMove 20s ease infinite;
+            background: #0f0f0f;
+            position: relative;
         }
 
-        @keyframes bgMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* LIGHT WAVE BACKGROUND */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(
+                circle at center,
+                rgba(255,255,255,0.06),
+                transparent 60%
+            );
+            animation: lightWave 18s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes lightWave {
+            0% {
+                transform: translateX(-10%) translateY(-10%) scale(1);
+            }
+            50% {
+                transform: translateX(10%) translateY(10%) scale(1.1);
+            }
+            100% {
+                transform: translateX(-10%) translateY(-10%) scale(1);
+            }
         }
 
         /* INTRO SECTION */
@@ -52,11 +74,24 @@
             box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
-        .intro-content h1 {
-            font-size: 54px;
-            font-weight: 600;
+        .intro-text {
+            display: flex;
+            flex-direction: column;
         }
 
+        .intro-text h1 {
+            font-size: 50px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+
+        /* BUTTON */
         .intro button {
             margin-top: 40px;
             padding: 14px 36px;
@@ -122,6 +157,7 @@
             font-size: 16px;
         }
 
+        /* FLOATING ANIMATION */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -138,7 +174,11 @@
 
     <div class="intro-content">
         <img src="assets/Profile.jpeg" alt="Profile Photo">
-        <h1>Pavan Kumar Reddy</h1>
+        
+        <div class="intro-text">
+            <h1>Pavan Kumar Reddy</h1>
+            <p class="subtitle">UI/UX Designer • Flutter Developer</p>
+        </div>
     </div>
 
     <button onclick="reveal()">Tap to Reveal</button>
