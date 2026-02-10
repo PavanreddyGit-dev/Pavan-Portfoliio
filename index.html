@@ -12,15 +12,14 @@
             font-family: Arial, sans-serif;
         }
 
-        /* LIGHT BACKGROUND */
         body {
+            background: #f8f9fb;
             color: #222;
             overflow: hidden;
-            background: #f8f9fb;
             position: relative;
         }
 
-        /* SUBTLE LIGHT WAVE ANIMATION */
+        /* Subtle Light Wave */
         body::before {
             content: "";
             position: absolute;
@@ -28,35 +27,27 @@
             height: 150%;
             top: -25%;
             left: -25%;
-            background: radial-gradient(
-                circle at center,
-                rgba(0,0,0,0.05),
-                transparent 60%
-            );
+            background: radial-gradient(circle at center,
+                    rgba(0,0,0,0.05),
+                    transparent 60%);
             animation: lightWave 18s ease-in-out infinite;
             z-index: -1;
         }
 
         @keyframes lightWave {
-            0% {
-                transform: translateX(-10%) translateY(-10%) scale(1);
-            }
-            50% {
-                transform: translateX(10%) translateY(10%) scale(1.1);
-            }
-            100% {
-                transform: translateX(-10%) translateY(-10%) scale(1);
-            }
+            0% { transform: translate(-10%, -10%) scale(1); }
+            50% { transform: translate(10%, 10%) scale(1.1); }
+            100% { transform: translate(-10%, -10%) scale(1); }
         }
 
-        /* INTRO SECTION */
+        /* INTRO */
         .intro {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease;
         }
 
         .intro-content {
@@ -71,16 +62,11 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #222;
-            box-shadow: 0 0 25px rgba(0,0,0,0.15);
-        }
-
-        .intro-text {
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
         }
 
         .intro-text h1 {
-            font-size: 50px;
+            font-size: 48px;
             font-weight: 500;
         }
 
@@ -88,10 +74,8 @@
             margin-top: 8px;
             font-size: 16px;
             color: rgba(0,0,0,0.6);
-            letter-spacing: 1px;
         }
 
-        /* BUTTON */
         .intro button {
             margin-top: 40px;
             padding: 14px 36px;
@@ -99,7 +83,7 @@
             background: transparent;
             color: #222;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .intro button:hover {
@@ -114,7 +98,7 @@
             height: 100vh;
             width: 100%;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease;
         }
 
         .left, .right {
@@ -136,16 +120,14 @@
         }
 
         .right {
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.9);
             flex-direction: column;
             padding: 60px;
             border-left: 1px solid rgba(0,0,0,0.05);
         }
 
         .right h2 {
-            font-size: 40px;
+            font-size: 36px;
             margin-bottom: 20px;
         }
 
@@ -153,36 +135,66 @@
             max-width: 450px;
             line-height: 1.6;
             color: #555;
-            font-size: 16px;
         }
 
-        /* FLOATING ANIMATION */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
-
     </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
+    <!-- INTRO -->
+    <div class="intro" id="intro">
+        <div class="intro-content">
+            <img src="assets/Profile.jpeg" alt="Profile Photo">
+            <div class="intro-text">
+                <h1>Pavan Kumar Reddy</h1>
+                <p class="subtitle">UI/UX Designer • Flutter Developer</p>
+            </div>
+        </div>
 
-    <div class="intro-content">
-        <img src="assets/Profile.jpeg" alt="Profile Photo">
-        
-        <div class="intro-text">
-            <h1>Pavan Kumar Reddy</h1>
-            <p class="subtitle">UI/UX Designer • Flutter Developer</p>
+        <button id="revealBtn">Tap to Reveal</button>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="split" id="splitSection">
+        <div class="left">
+            <img src="assets/Avatar.png" alt="Avatar">
+        </div>
+
+        <div class="right">
+            <h2>About Me</h2>
+            <p>
+                I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
+                I create modern digital experiences focused on storytelling,
+                interaction design, and clean user interfaces.
+            </p>
         </div>
     </div>
 
-    <button onclick="reveal()">Tap to Reveal</button>
+    <script>
+        document.getElementById("revealBtn").addEventListener("click", function() {
+            const intro = document.getElementById("intro");
+            const split = document.getElementById("splitSection");
 
-</div>
+            intro.style.opacity = "0";
 
-<!-- SPLIT SECTION -->
-<div class="split" id="splitSectio
+            setTimeout(function() {
+                intro.style.display = "none";
+                split.style.display = "flex";
+
+                setTimeout(function() {
+                    split.style.opacity = "1";
+                }, 50);
+
+                document.body.style.overflow = "auto";
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>
