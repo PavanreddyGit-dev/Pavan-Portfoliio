@@ -19,25 +19,19 @@
             position: relative;
         }
 
-        /* Subtle Light Wave */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            background: radial-gradient(circle at center,
-                    rgba(0,0,0,0.05),
-                    transparent 60%);
-            animation: lightWave 18s ease-in-out infinite;
+        /* MOUSE FOLLOW LIGHT */
+        .mouse-light {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle,
+                rgba(0,0,0,0.0.05),
+                transparent 60%);
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s linear;
             z-index: -1;
-        }
-
-        @keyframes lightWave {
-            0% { transform: translate(-10%, -10%) scale(1); }
-            50% { transform: translate(10%, 10%) scale(1.1); }
-            100% { transform: translate(-10%, -10%) scale(1); }
         }
 
         /* INTRO */
@@ -92,7 +86,7 @@
             transform: translateY(-3px);
         }
 
-        /* SPLIT SECTION */
+        /* SPLIT */
         .split {
             display: none;
             height: 100vh;
@@ -142,10 +136,14 @@
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
     </style>
 </head>
 
 <body>
+
+    <!-- LIGHT FOLLOW ELEMENT -->
+    <div class="mouse-light" id="mouseLight"></div>
 
     <!-- INTRO -->
     <div class="intro" id="intro">
@@ -177,6 +175,7 @@
     </div>
 
     <script>
+        /* Reveal Button */
         document.getElementById("revealBtn").addEventListener("click", function() {
             const intro = document.getElementById("intro");
             const split = document.getElementById("splitSection");
@@ -193,6 +192,14 @@
 
                 document.body.style.overflow = "auto";
             }, 800);
+        });
+
+        /* Mouse Follow Light */
+        const light = document.getElementById("mouseLight");
+
+        document.addEventListener("mousemove", function(e) {
+            light.style.left = e.clientX + "px";
+            light.style.top = e.clientY + "px";
         });
     </script>
 
