@@ -19,7 +19,7 @@
             perspective: 1200px;
         }
 
-        /* Mouse Light */
+        /* Mouse Spotlight */
         .mouse-light {
             position: fixed;
             width: 400px;
@@ -41,13 +41,13 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease;
-            transform-style: preserve-3d;
         }
 
         .intro-content {
             display: flex;
             align-items: center;
             gap: 30px;
+            transform-style: preserve-3d;
             transition: transform 0.2s ease;
         }
 
@@ -58,18 +58,38 @@
             object-fit: cover;
             border: 3px solid #111;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease;
         }
 
-        .intro-text h1 {
-            font-size: 48px;
-            font-weight: 500;
+        /* TEXT REVEAL */
+        .intro-text h1 span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealLetter 0.6s forwards;
+        }
+
+        @keyframes revealLetter {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .subtitle {
             margin-top: 8px;
             font-size: 16px;
             color: rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(15px);
+            animation: revealSubtitle 1s forwards;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes revealSubtitle {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .intro button {
@@ -80,6 +100,13 @@
             color: #111;
             cursor: pointer;
             transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInBtn 1s forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fadeInBtn {
+            to { opacity: 1; }
         }
 
         .intro button:hover {
@@ -148,7 +175,7 @@
         <div class="intro-content" id="parallaxLayer">
             <img src="assets/Profile.jpeg" alt="Profile Photo">
             <div class="intro-text">
-                <h1>Pavan Kumar Reddy</h1>
+                <h1 id="animatedName"></h1>
                 <p class="subtitle">UI/UX Designer • Flutter Developer</p>
             </div>
         </div>
@@ -173,6 +200,17 @@
     </div>
 
     <script>
+        /* LETTER BY LETTER NAME */
+        const name = "Pavan Kumar Reddy";
+        const nameContainer = document.getElementById("animatedName");
+
+        name.split("").forEach((letter, index) => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.animationDelay = (index * 0.05) + "s";
+            nameContainer.appendChild(span);
+        });
+
         /* Reveal Button */
         document.getElementById("revealBtn").addEventListener("click", function() {
             const intro = document.getElementById("intro");
@@ -199,7 +237,7 @@
             light.style.top = e.clientY + "px";
         });
 
-        /* Apple Smooth Parallax */
+        /* Parallax */
         const layer = document.getElementById("parallaxLayer");
         const avatar = document.getElementById("avatar");
 
