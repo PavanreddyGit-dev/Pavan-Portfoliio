@@ -18,13 +18,15 @@
             overflow: hidden;
         }
 
-        /* INTRO */
+        /* INTRO SECTION */
         .intro {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 1;
+            transition: opacity 1s ease;
         }
 
         .intro h1 {
@@ -52,6 +54,8 @@
             display: none;
             height: 100vh;
             width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
         .left, .right {
@@ -87,33 +91,38 @@
             color: #aaa;
         }
 
+        /* Floating Animation */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
     </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <div class="intro" id="intro">
     <h1>Pavan Kumar Reddy</h1>
     <button onclick="reveal()">Tap to Reveal</button>
 </div>
 
+<!-- SPLIT SECTION -->
 <div class="split" id="splitSection">
 
     <div class="left">
-        <img src="assets/Avatar.png">
+        <!-- Make sure image name matches exactly -->
+        <img src="assets/Avatar.png" alt="Avatar">
     </div>
 
     <div class="right">
         <h2>About Me</h2>
         <p>
-            I am a UI/UX Designer and Flutter Developer.
-            I create modern, immersive digital experiences
-            with storytelling and smooth interactions.
+            I am Pavan Kumar Reddy, a UI/UX Designer and Flutter Developer.
+            I create modern, immersive digital experiences with storytelling
+            and smooth interactions.
         </p>
     </div>
 
@@ -121,12 +130,25 @@
 
 <script>
     function reveal() {
-        document.getElementById("intro").style.display = "none";
-        document.getElementById("splitSection").style.display = "flex";
-        document.body.style.overflow = "auto";
+        const intro = document.getElementById("intro");
+        const split = document.getElementById("splitSection");
+
+        // Fade out intro
+        intro.style.opacity = "0";
+
+        setTimeout(() => {
+            intro.style.display = "none";
+            split.style.display = "flex";
+
+            setTimeout(() => {
+                split.style.opacity = "1";
+            }, 50);
+
+            document.body.style.overflow = "auto";
+
+        }, 1000);
     }
 </script>
 
 </body>
 </html>
-
