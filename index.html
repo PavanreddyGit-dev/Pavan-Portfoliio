@@ -9,17 +9,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
             background: #f8f9fb;
-            color: #222;
+            color: #111;
             overflow: hidden;
-            position: relative;
+            perspective: 1200px;
         }
 
-        /* MOUSE FOLLOW LIGHT */
+        /* Mouse Light */
         .mouse-light {
             position: fixed;
             width: 400px;
@@ -27,11 +27,10 @@
             border-radius: 50%;
             pointer-events: none;
             background: radial-gradient(circle,
-                rgba(0,0,0,0.0.05),
+                rgba(0,0,0,0.06),
                 transparent 60%);
             transform: translate(-50%, -50%);
-            transition: transform 0.08s linear;
-            z-index: -1;
+            z-index: 0;
         }
 
         /* INTRO */
@@ -42,12 +41,14 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease;
+            transform-style: preserve-3d;
         }
 
         .intro-content {
             display: flex;
             align-items: center;
             gap: 30px;
+            transition: transform 0.2s ease;
         }
 
         .intro-content img {
@@ -55,8 +56,9 @@
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #222;
-            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            border: 3px solid #111;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
         }
 
         .intro-text h1 {
@@ -73,15 +75,15 @@
         .intro button {
             margin-top: 40px;
             padding: 14px 36px;
-            border: 1px solid #222;
+            border: 1px solid #111;
             background: transparent;
-            color: #222;
+            color: #111;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .intro button:hover {
-            background: #222;
+            background: #111;
             color: white;
             transform: translateY(-3px);
         }
@@ -102,22 +104,19 @@
             align-items: center;
         }
 
-        .left {
-            background: #ffffff;
-        }
-
         .left img {
             width: 280px;
             max-height: 70vh;
             object-fit: contain;
             animation: float 4s ease-in-out infinite;
+            transition: transform 0.2s ease;
         }
 
         .right {
-            background: rgba(255,255,255,0.9);
             flex-direction: column;
             padding: 60px;
-            border-left: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
         }
 
         .right h2 {
@@ -142,12 +141,11 @@
 
 <body>
 
-    <!-- LIGHT FOLLOW ELEMENT -->
     <div class="mouse-light" id="mouseLight"></div>
 
     <!-- INTRO -->
     <div class="intro" id="intro">
-        <div class="intro-content">
+        <div class="intro-content" id="parallaxLayer">
             <img src="assets/Profile.jpeg" alt="Profile Photo">
             <div class="intro-text">
                 <h1>Pavan Kumar Reddy</h1>
@@ -161,7 +159,7 @@
     <!-- SPLIT -->
     <div class="split" id="splitSection">
         <div class="left">
-            <img src="assets/Avatar.png" alt="Avatar">
+            <img src="assets/Avatar.png" id="avatar">
         </div>
 
         <div class="right">
@@ -194,12 +192,25 @@
             }, 800);
         });
 
-        /* Mouse Follow Light */
+        /* Mouse Light */
         const light = document.getElementById("mouseLight");
-
         document.addEventListener("mousemove", function(e) {
             light.style.left = e.clientX + "px";
             light.style.top = e.clientY + "px";
+        });
+
+        /* Apple Smooth Parallax */
+        const layer = document.getElementById("parallaxLayer");
+        const avatar = document.getElementById("avatar");
+
+        document.addEventListener("mousemove", function(e) {
+            const x = (window.innerWidth / 2 - e.clientX) / 40;
+            const y = (window.innerHeight / 2 - e.clientY) / 40;
+
+            layer.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+            if (avatar) {
+                avatar.style.transform = `translateX(${x * 2}px) translateY(${y * 2}px)`;
+            }
         });
     </script>
 
