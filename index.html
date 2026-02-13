@@ -13,44 +13,70 @@
         }
 
         body {
-            background: #f8f9fb;
-            color: #111;
+            background: #f5f7fa;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: #111;
         }
 
+        /* Container */
         .intro-content {
             display: flex;
             align-items: center;
             gap: 25px;
         }
 
+        /* Profile Image */
         .intro-content img {
             width: 130px;
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #111;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        h1 {
-            font-size: 46px;
+        /* Apple Style Text Animation */
+        .apple-text {
+            font-size: 48px;
             font-weight: 500;
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(8px);
+            animation: appleReveal 1.2s ease forwards;
         }
 
+        @keyframes appleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(8px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5px);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Button */
         button {
-            margin-top: 40px;
-            padding: 14px 36px;
+            margin-top: 50px;
+            padding: 14px 40px;
             border: 1px solid #111;
             background: transparent;
             color: #111;
             cursor: pointer;
-            transition: 0.3s ease;
             font-size: 16px;
+            transition: all 0.3s ease;
         }
 
         button:hover {
@@ -66,7 +92,7 @@
 
     <div class="intro-content">
         <img src="assets/profile-1.jpeg" alt="Profile Photo">
-        <h1>Pavan Kumar Reddy</h1>
+        <h1 class="apple-text">Pavan Kumar Reddy</h1>
     </div>
 
     <button onclick="window.location.href='about.html'">
